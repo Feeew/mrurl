@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=1024, user-scalable=no">
+
+  <title>Scripts avancés — PHP</title>
+
+  <!-- Required stylesheet -->
+  <link rel="stylesheet" media="screen" href="core/deck.core.css">
+
+  <!-- Extension CSS files go here. Remove or add as needed. -->
+  <link rel="stylesheet" media="screen" href="extensions/goto/deck.goto.css">
+  <link rel="stylesheet" media="screen" href="extensions/menu/deck.menu.css">
+  <link rel="stylesheet" media="screen" href="extensions/navigation/deck.navigation.css">
+  <link rel="stylesheet" media="screen" href="extensions/status/deck.status.css">
+  <link rel="stylesheet" media="screen" href="extensions/scale/deck.scale.css">
+
+  <!-- Style theme. More available in /themes/style/ or create your own. -->
+  <link rel="stylesheet" media="screen" href="themes/style/swiss.css">
+
+  <!-- Transition theme. More available in /themes/transition/ or create your own. -->
+  <link rel="stylesheet" media="screen" href="themes/transition/horizontal-slide.css">
+
+  <!-- Basic black and white print styles -->
+  <link rel="stylesheet" media="print" href="core/print.css">
+
+  <!-- Required Modernizr file -->
+  <script src="modernizr.custom.js"></script>
+</head>
+<body>
+  <div class="deck-container">
+
+    <!-- Begin slides. Just make elements with a class of slide. -->
+
+    <section class="slide">
+      <h1>Scripts avancés</h1>
+
+    </section>
+
+<section class="slide">
+  <h2>Nicolas Lœuillet</h2>
+  <ul>
+    <li>
+      <h3>Développeur web — Coteo, Calais</h3>
+    </li>
+    <li>
+      <h3>Projets open source</h3>
+    </li>
+    <li>
+      <h3>twitter : @nicosomb</h3>
+    </li>
+    <li>
+      <h3>https://github.com/nicosomb</h3>
+    </li>
+    <li>
+      <h3>nicolas@loeuillet.org</h3>
+    </li>
+  </ul>
+</section>
+
+
+<section class="slide">
+  <h2>Plan</h2>
+  <p class="slide">Quelques rappels sur :</p>
+  <ul>
+    <li class="slide">
+      <h3>PHP</h3>
+    </li>
+    <li class="slide"><h3>SQL</h3></li>
+    <li class="slide"><h3>GIT</h3></li>
+    <li class="slide"><h3>Au boulot !</h3></li>
+  </ul>
+</section>
+
+<section class="slide">
+  <h2>PHP : variables</h2>
+  <pre><code>// affectation d'une variable, pas de déclaration (tiens, un commentaire)
+$compteur = 0;
+$nom = "Nicolas";</code></pre>
+<p>En PHP, les variables ont un typage faible : un booléen peut devenir une chaine de caractère, puis un entier, etc. </p>
+</section>
+
+<section class="slide">
+  <h2>PHP : opérateurs</h2>
+  <pre><code>$compteur++; $compteur--; 
+$fini = !$commence;
+$a = (($b + $c) * 2) / $d;
+$bienvenue = "Hello " . $nom . " !";
+$reste = $total % 2; // pratique pour savoir si un nombre est pair
+if ($a == $b) echo "$a et $b sont égaux";
+if ($a != $b) echo "$a et $b ne sont pas égaux";
+if (($a == $b) && ($b == $c)) echo "$a, $b et $c sont égaux.";
+if (($a == $b) || ($b == $c)) echo "L'un des deux est égal à $c.";
+$a = 3; $a += 2; echo $a;
+$chaine = "Hello "; $chaine .= "Nicolas"; echo $chaine;
+</code></pre>
+</section>
+
+<section class="slide">
+  <h2>PHP : structures de contrôle</h2>
+  <pre><code>if ($condition) {
+    // instructions
+} elseif ($autre_condition) {
+    // instructions
+} else {
+    // instructions
+}
+
+while ($condition) {
+    // instructions
+}
+
+for ($i=0; $i <= 10; $i++) {
+    // instructions
+}
+</code></pre>
+</section>
+
+<section class="slide">
+  <h2>PHP : structures de contrôle</h2>
+  <pre><code>switch ($variable) {
+    case 'valeur1':
+        // instructions
+        break;
+    case 'valeur2':
+        // instructions
+        break;
+    default:
+        // instructions
+}
+</code></pre>
+</section>
+
+<section class="slide">
+  <h2>PHP : fonctions et classes</h2>
+  <pre><code>function calcul_tva($montant_ht, $taux = 20) {
+    return ($montant * $taux) / 100;
+}
+
+class Voiture {
+    public $couleur;
+    public $motorisation = "Diesel";
+    
+    public function getCouleur() {
+        echo $this->couleur;
+    }
+
+    public function getMotorisation() {
+        echo $this->motorisation;
+    }
+}
+</code></pre>
+</section>
+
+
+<section class="slide">
+  <h2>SQL</h2>
+  <ul>
+    <li class="slide">
+      <h3>MySQL, PostgreSQL, SQLite</h3>
+    </li>
+    <li class="slide"><h3>langage SQL pour les trois</h3></li>
+    <li class="slide"><h3>Client / Serveur sauf pour SQLite</h3></li>
+  </ul>
+</section>
+
+<section class="slide">
+  <h2>SQL : requêtes</h2>
+  <pre><code>SELECT immatriculation, COUNT(*) FROM voiture WHERE couleur = "rouge";
+
+INSERT INTO voiture (modele, couleur, immatriculation)
+VALUES ("Peugeot 205", "blanche", "AA-123-AA");
+</code></pre>
+  <ul>
+    <li>
+      CREATE DATABASE, DROP DATABASE
+    </li>
+    <li>CREATE TABLE, DROP TABLE, ALTER TABLE</li>
+    <li>SELECT, INSERT, UPDATE, DELETE</li>
+    <li>LIKE (NOT)</li>
+    <li>AVG(), SUM(), COUNT(), MIN(), MAX(), RAND()</li>
+    <li>DISTINCT()</li>
+    <li>GROUP BY, ORDER BY</li>
+  </ul>
+</section>
+
+<section class="slide">
+  <h2>GIT</h2>
+  <p>Système de gestion de version décentralisé</p>
+<pre><code>git pull
+git status
+git add index.php
+git commit -m "ajout du menu de navigation"
+git push</code></pre>
+</section>
+
+    <section class="slide">
+      <h1>Au boulot !</h1>
+    </section>
+
+<section class="slide">
+  <h2>Raccourcisseur d'URL</h2>
+  <ul>
+    <li class="slide">
+      création / suppression d'une URL raccourcie
+    </li>
+    <li class="slide">
+      lister les URL déjà raccourcies
+    </li>
+    <li class="slide">
+      compteur de clics
+    </li>
+    
+  </ul>
+  <h3 class="slide">Évolutions possibles</h3>
+  <ul>
+    <li class="slide">
+      ne pas insérer plusieurs fois la même URL
+    </li>
+    <li class="slide">
+      authentification
+    </li>
+    <li class="slide">
+      personnalisation de l'URL
+    </li>
+    <li class="slide">
+      ajouter un commentaire à chaque URL
+    </li>
+    <li class="slide">
+      statistiques plus avancées (clics par jour / mois, referer, pays d'origine, etc.)
+    </li>
+    <li class="slide">
+      ...
+    </li>
+    
+  </ul>
+
+  <h3 class="slide">Documentation</h3>
+  <ul>
+      <li class="slide">http://devdocs.io/php/</li>
+      <li class="slide">http://php.net</li>
+  </ul>
+</section>
+
+    <!-- End slides. -->
+
+    <!-- Begin extension snippets. Add or remove as needed. -->
+
+    <!-- deck.navigation snippet -->
+    <div aria-role="navigation">
+      <a href="#" class="deck-prev-link" title="Previous">&#8592;</a>
+      <a href="#" class="deck-next-link" title="Next">&#8594;</a>
+    </div>
+
+    <!-- deck.status snippet -->
+    <p class="deck-status" aria-role="status">
+      <span class="deck-status-current"></span>
+      /
+      <span class="deck-status-total"></span>
+    </p>
+
+    <!-- deck.goto snippet -->
+    <form action="." method="get" class="goto-form">
+      <label for="goto-slide">Go to slide:</label>
+      <input type="text" name="slidenum" id="goto-slide" list="goto-datalist">
+      <datalist id="goto-datalist"></datalist>
+      <input type="submit" value="Go">
+    </form>
+
+    <!-- End extension snippets. -->
+  </div>
+
+<!-- Required JS files. -->
+<script src="jquery.min.js"></script>
+<script src="core/deck.core.js"></script>
+
+<!-- Extension JS files. Add or remove as needed. -->
+<script src="extensions/menu/deck.menu.js"></script>
+<script src="extensions/goto/deck.goto.js"></script>
+<script src="extensions/status/deck.status.js"></script>
+<script src="extensions/navigation/deck.navigation.js"></script>
+<script src="extensions/scale/deck.scale.js"></script>
+
+<!-- Initialize the deck. You can put this in an external file if desired. -->
+<script>
+  $(function() {
+    $.deck('.slide');
+  });
+</script>
+</body>
+</html>
